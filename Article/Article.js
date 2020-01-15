@@ -167,7 +167,7 @@ p3.textContent = thirdParagraph;
 expandButton.textContent = 'Click to Expand';
 
 // Added event listenter with a toggle 
-expandButton.addEventListener('click', (e) => {
+expandButton.addEventListener('click', () => {
   article.classList.toggle('article-open')
 })
 
@@ -177,14 +177,11 @@ return article;
 
 const articles = document.querySelector('.articles');
 
-// data.map((article) => {
-//   return articles.append(createArt(article.title, article.date, article.firstParagraph, article.secondParagraph, article.thirdParagraph))
-// })
-
-
-
-// const article2 = document.querySelector('.articles');
-
-data.forEach( event => {
-  articles.append(createArt(event.title, event.date, event.firstParagraph, event.secondParagraph, event.thirdParagraph))
+data.map((article) => {
+  return articles.append(createArt(article.title, article.date, article.firstParagraph, article.secondParagraph, article.thirdParagraph))
 })
+
+
+// data.forEach( event => {
+//   articles.append(createArt(event.title, event.date, event.firstParagraph, event.secondParagraph, event.thirdParagraph))
+// })
