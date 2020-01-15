@@ -85,7 +85,24 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+      title: 'Learning Web Development in 2020',
+      date: 'Jan 15, 2020',
+      firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+            hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+            Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+  
+      secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+            hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+            hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+            hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+  
+      thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+            Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+            Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
+
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
@@ -98,6 +115,7 @@ const data = [
 
     <span class='expandButton'></span>
   </div>
+  
 
   Hint: You will need to use createElement more than once here!
 
@@ -112,3 +130,61 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+// Created new Function
+function createArt(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+
+// Defined new Elements  
+const article = document.createElement('div');
+const h2 = document.createElement('h2');
+const pDate = document.createElement('p');
+const p1 = document.createElement('p');
+const p2 = document.createElement('p');
+const p3 = document.createElement('p');
+const expandButton = document.createElement('span');
+
+
+// Setup the structure of above Elements
+article.append(h2);
+article.append(pDate);
+article.append(p1);
+article.append(p2);
+article.append(p3);
+article.append(expandButton);
+
+// Added classes to elements
+article.classList.add('article');
+pDate.classList.add('date');
+expandButton.classList.add('expandButton');
+
+
+// Set text content
+h2.textContent = title;
+pDate.textContent = date;
+p1.textContent = firstParagraph;
+p2.textContent = secondParagraph;
+p3.textContent = thirdParagraph;
+expandButton.textContent = 'Click to Expand';
+
+// Added event listenter with a toggle 
+expandButton.addEventListener('click', (e) => {
+  article.classList.toggle('article-open')
+})
+
+return article;
+
+}
+
+const articles = document.querySelector('.articles');
+
+// data.map((article) => {
+//   return articles.append(createArt(article.title, article.date, article.firstParagraph, article.secondParagraph, article.thirdParagraph))
+// })
+
+
+
+// const article2 = document.querySelector('.articles');
+
+data.forEach( event => {
+  articles.append(createArt(event.title, event.date, event.firstParagraph, event.secondParagraph, event.thirdParagraph))
+})
